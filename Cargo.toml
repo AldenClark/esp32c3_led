@@ -1,0 +1,36 @@
+[package]
+name = "esp32c3_ws2812"
+version = "0.1.0"
+edition = "2021"
+authors = ["@DoraSean"]
+description = "ESP32-C3 with ws2812"
+homepage = "https://github.com/DoraSean/esp32c3_led"
+readme = "README.md"
+repository = "https://github.com/DoraSean/esp32c3_led"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-sys = { version = "0.31.7", features = ["binstart", "std"] }
+esp-idf-svc = "0.42.3"
+esp-idf-hal = "0.38.1"
+embedded-svc = "0.22.1"
+embedded-hal = "0.2.7"
+serde_json = "1.0.85"
+serde = "1.0.144"
+ws2812-esp32-rmt-driver = "0.4"
+smart-leds = "0.3"
+smart-leds-trait = "0.2"
+
+
+[build-dependencies]
+embuild = "0.29"
+anyhow = "1"
